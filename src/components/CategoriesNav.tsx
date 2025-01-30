@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAllCategories } from "@/service/product";
-import { Categories } from "@/types/product";
+import { Category } from "@/types/product";
 export default function CategoriesNav() {
-    const [categories, setCategories] = useState<Categories[] | []>();
+    const [categories, setCategories] = useState<Category[] | []>();
 
     useEffect(() => {
         const fetchCategories = async () => {
