@@ -29,7 +29,7 @@ export default function PagesNav() {
                     </Link>
                 </li>
                 <li className="px-2">
-                    <Link href="/mycart" className="flex flex-col items-center justify-center pt-1">
+                    <Link href="/cart" className="flex flex-col items-center justify-center pt-1">
                         <ShoppingCart className="mr-2" />
                         <p className="p-2 pt-0 md:pt-2  text-sm font-medium md:hidden">Carrito</p>
                     </Link>

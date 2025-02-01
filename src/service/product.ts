@@ -18,17 +18,19 @@ export const getAllCategories = async (): Promise<Category[]> => {
 };
 
 export const createCategory = async (
-  name: string
+  name: string,
+  token: string
 ): Promise<Category | void> => {
   try {
-    const response = await axios.post<Category>(`${API_URL}/categories`, {
-      headers: {
-        Authorization: `Bearer token`,
-      },
-      body: {
-        name,
-      },
-    });
+    const response = await axios.post<Category>(
+      `${API_URL}/categories`,
+      { name }, // El cuerpo del request
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response.data;
   } catch (err) {
     console.error("Error creating category:", err);
@@ -68,12 +70,18 @@ export const getProductById = async (
 };
 
 export const createProduct = async (
-  product: CreateProduct
+  product: CreateProduct,
+  token: string
 ): Promise<CreatedProduct> => {
   try {
     const response = await axios.post<CreatedProduct>(
       `${API_URL}/product`,
-      product
+      product,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return response.data;
   } catch (err) {

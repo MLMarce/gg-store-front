@@ -8,7 +8,7 @@ import { Testimonials } from "@/components/Testimonials";
 
 export default function Home() {
   return (
-    <main className="pt-20">
+    <main className="pt-20 scrooll-smooth">
       <Hero />
       <FeaturedProducts />
       <Categories />
