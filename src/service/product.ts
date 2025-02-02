@@ -12,7 +12,7 @@ export const getAllCategories = async (): Promise<Category[]> => {
     const response = await axios.get<Category[]>(`${API_URL}/categories`);
     return response.data;
   } catch (err) {
-    console.error("Error fetching categories:", err);
+    console.error("Error al obtener las categorías:", err);
     return [];
   }
 };
