@@ -44,12 +44,25 @@ export default function CartItem({
     };
 
     return (
-        <Card className="flex items-center gap-4 p-4">
-            <Image src={image} alt={title} width={60} height={60} className="rounded-md" />
-            <CardContent className="flex-1">
-                <h3 className="font-medium">{title}</h3>
-                <p className="text-sm text-gray-500">${price.toFixed(2)}</p>
-                <div className="flex items-center gap-2 mt-2">
+        <Card className="p-4 flex flex-col sm:flex-row items-center gap-4 w-full">
+            {/* Imagen del producto */}
+            <Image
+                src={image}
+                alt={title}
+                width={80}
+                height={80}
+                className="rounded-md object-cover"
+            />
+
+            {/* Contenido principal */}
+            <CardContent className="flex flex-col sm:flex-row justify-between items-center sm:items-start flex-1 w-full">
+                <div className="text-center sm:text-left">
+                    <h3 className="font-medium">{title}</h3>
+                    <p className="text-sm text-gray-500">${price.toFixed(2)}</p>
+                </div>
+
+                {/* Controles de cantidad */}
+                <div className="flex items-center gap-2 mt-2 sm:mt-0">
                     <Button variant="outline" size="icon" onClick={handleDecrease} disabled={currentQuantity <= 1}>
                         <Minus size={16} />
                     </Button>
@@ -59,6 +72,8 @@ export default function CartItem({
                     </Button>
                 </div>
             </CardContent>
+
+            {/* Botón de eliminar */}
             <Button variant="destructive" size="icon" onClick={() => onRemove(id)}>
                 <Trash size={16} />
             </Button>

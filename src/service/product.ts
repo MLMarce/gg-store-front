@@ -1,5 +1,6 @@
 import {
   Category,
+  CategoryByID,
   CreatedProduct,
   CreateProduct,
   Product,
@@ -37,12 +38,14 @@ export const createCategory = async (
   }
 };
 
-export const getCategoryById = async (id: string): Promise<Category | void> => {
+export const getCategoryById = async (id: string): Promise<CategoryByID | null> => {
   try {
-    const response = await axios.get<Category>(`${API_URL}/categories/${id}`);
+    const response = await axios.get<CategoryByID>(`${API_URL}/categories/${id}`);
+    console.log(response.data);
     return response.data;
   } catch (err) {
     console.error("Error fetching category by id:", err);
+    return null;
   }
 };
 
@@ -58,7 +61,7 @@ export const getAllProducts = async (): Promise<Product[]> => {
 
 export const getProductById = async (
   id: string
-): Promise<CreatedProduct | void> => {
+): Promise<CreatedProduct | null> => {
   try {
     const response = await axios.get<CreatedProduct>(
       `${API_URL}/product/${id}`
@@ -66,6 +69,7 @@ export const getProductById = async (
     return response.data;
   } catch (err) {
     console.error("Error al obtener el producto:", err);
+    return null;
   }
 };
 
